@@ -1,0 +1,12 @@
+<h1>Warehouse (Row<%= @warehouse.id %>) </h1>
+<h4>Store - <%= link_to @warehouse.store.name, store_path(@warehouse.store.id)%></h4>
+<h4>Item - <%= link_to @warehouse.item.name, item_path(@warehouse.item.id)%></h4>
+<h4>Price - <%=@warehouse.price%></h4>
+<h4>Quantity - <%=@warehouse.quantity%></h4>
+
+<%=link_to "Edit", {controller: "warehouses", action: "edit", id: @warehouse.id}, :class => "add_to_cart"%>
+<%= link_to "Remove", warehouse_remove_path(@warehouse), method: :delete, :class => "add_to_cart"%>
+
+<%#=link_to "Remove", controller: "warehouses", action: "destroy", id: @warehouse.id%>
+
+<%= link_to "Back", warehouses_path, :class => "add_to_cart"%>

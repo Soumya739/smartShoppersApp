@@ -1,0 +1,19 @@
+<h3><%= flash[:message]%></h3>
+
+<%= form_for @user do |f| %>
+<%= f.label :name, "Username:"%>
+<%= f.text_field :name%><br>
+<%= f.label :address, "Address:"%>
+<%= f.text_field :address%><br>
+<%= f.label :contact_num, "Contact Number:"%>
+<%= f.number_field :contact_num%><br>
+<%= f.label :city, "City:"%>
+<%= f.text_field :city%><br>
+<%= f.label :email, "Email:"%>
+<%= f.text_field :email%><br>
+<%= f.label :password, "password:"%>
+<%= f.password_field :password%><br>
+<%= f.label :password_confirmation, "Confirm password:"%>
+<%= f.password_field :password_confirmation %><br>
+<%= f.submit "Submit", :class => "add_to_cart"%>
+<% end %>

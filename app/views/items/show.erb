@@ -1,0 +1,12 @@
+
+<p style="font-size: 40px;"><b>Name :- </b><%= @item.name%>(<%= @item.section%>)</p>
+<% if @warehouse_with_the_item.any? %>
+  <% @warehouse_with_the_item.each do |warehouse|%>
+    <li style="font-size: 30px;">Store_Name :- <%= link_to warehouse.store.name, store_path(warehouse.store_id) %> :: Quantity :- <%= warehouse.quantity %> :: Price :- <%= warehouse.price %><%=link_to "Add to cart", {controller: "stores", action: "add_item_to_cart", id: warehouse.store_id, warehouse_id: warehouse.id}, :class => "add_to_cart"%></li>
+
+  <% end %>
+<% else%>
+  <b><%= "Out of stock!!" %></b>
+<% end %>
+
+<h4><%= link_to "Back", items_path, :class => "add_to_cart" %></h4>

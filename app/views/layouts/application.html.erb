@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SmartShoppersApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <style>
+      body {
+        background-color: #CCFFFF;
+
+      }
+
+      .compare {
+          margin-left: 0px;
+          padding: 2px 4px;
+          background-color: #82c552;
+          display: inline-block;
+          cursor: pointer;
+          border-radius: 12px;
+      }
+
+
+      .header {
+        padding: 5px;
+        text-align: center;
+        background: #1abc9c;
+        color: white;
+        font-size: 20px;
+      }
+      #header1 {
+        color: black;
+        text-decoration: underline;
+        font-size: 30px;
+      }
+
+      .text {
+          position: relative;
+          margin-left: 150px;
+          font-size: 20px;
+      }
+      .footer {
+        bottom: 0;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        border-style: outset;
+        background-color: #1abc9c;
+        padding: 0px;
+        text-align: center;
+        color: black;
+        font-size: 15px;
+      }
+
+      .add_to_cart {
+        background-color: #82c552; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        padding: 10px 24px;
+      }
+
+      .notification {
+        position: absolute;
+        bottom: 60px;
+        right: 16px;
+        font-size: 18px;
+      }
+
+      .style_image {
+        border: 10px solid ;
+        border-color: black;
+        display: block;
+        width:45%;
+        height: 35%;
+        margin-top: 2%;
+        margin-left: 20%;
+        margin-bottom: 100px;
+        border-radius: 10px;
+        padding: 5px;
+
+       }
+       .footer_content {
+         font-size: 20px;
+       }
+
+
+
+    </style>
+  </head>
+
+
+  <body>
+
+    <header class="header">
+      <div id="header1">
+          <h2><b>Go Smart!</b></h2>
+      </div>
+      <div >
+        <% if logged_in? %>
+          <p> <%= link_to "Home", smartshoppers_path, :style=>'color:#2d2a7b;'%> ||
+            <%= link_to "Profile","/users/#{session[:user_id]}", :style=>'color:#2d2a7b;'%> ||
+            <%= link_to "Stores", stores_path, :style=>'color:#2d2a7b;' %> ||
+            <%= link_to "Items", items_path, :style=>'color:#2d2a7b;' %> ||
+            <%= link_to "Order History", orders_path, :style=>'color:#2d2a7b;' %> ||
+            <%= link_to "Cart", carts_path, :style=>'color:#2d2a7b;' %> ||
+            <%= link_to "warehouse", warehouses_path, :style=>'color:#2d2a7b;' %> ||
+            <%= link_to "Logout", smartshoppers_logout_path, :style=>'color:#2d2a7b;' %></p>
+        <% else %>
+          <p><%= link_to "Sign up", signup_path %> || <%= link_to "Sign in", smartshoppers_signin_path %></h3>
+        <% end %>
+      </div>
+    </header>
+
+    <div class="text">
+      <%= yield %>
+    </div>
+
+    <footer>
+      <div class="footer">
+        <p class="footer_content">
+          <b><%= link_to "About", "/about", :style=>'color:#2d2a7b;' %> ||
+          <%= link_to "Contact", "/contact", :style=>'color:#2d2a7b;' %> ||
+          <%= link_to "Help", "/help", :style=>'color:#2d2a7b;' %> ||
+          <%= link_to "Policy", "/policy", :style=>'color:#2d2a7b;' %>
+          </b>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

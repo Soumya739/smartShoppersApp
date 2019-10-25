@@ -1,0 +1,4 @@
+<h1>All stores</h1>
+<% @stores.each do |store| %>
+    <li><%= link_to "#{store.name}", "/stores/#{store.id}" %> :: <%= store.city %></li>
+<% end %>

@@ -1,0 +1,8 @@
+<%= flash[:message] %>
+<%= form_for :auth do |f| %>
+  <%= f.label :email, "Email Address:" %>
+  <%= f.text_field :email %>
+  <%= f.label :password, "password:"%>
+  <%= f.password_field :password%><br>
+  <%= f.submit "Signin" %>
+<% end %>

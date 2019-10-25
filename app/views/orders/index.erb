@@ -1,0 +1,15 @@
+<h1>Your Orders</h1>
+<% if @current_user_orders.length == 0 %>
+  <%="You have no previous orders" %>
+<% else %>
+  <% @current_user_orders.order("created_at").each do |order| %>
+    <% warehouse_orders = order.warehouses %>
+    <% total_price = 0.0 %>
+    <% warehouse_orders.each do |warehouse| %>
+      <% total_price = total_price + warehouse.price %>
+    <% end %>
+    <%= link_to order.id, order_path(order.id)%> :: <%= order.created_at %> :: Total Price - $<%= total_price %><br>
+  <% end %>
+<% end %>
+
+<h4><%= link_to "Home", smartshoppers_path %></h4>

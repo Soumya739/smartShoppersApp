@@ -1,0 +1,16 @@
+<%= flash[:message] %>
+<h1>Cart Details</h1>
+<b>Updated at :</b><%= @cart.updated_at.strftime("%m/%d/%Y")%><%= @cart.updated_at.strftime(",  %I:%M%p")%> "UTC" <br>
+<% if @warehouse_carts.any?%>
+  <%= "Items:"%>
+  <% @warehouse_carts.each do |warehouse_cart|%>
+    Store : <%= warehouse_cart.warehouse.store.name %>, Item : <%= warehouse_cart.warehouse.item.name %>,  Price : <%= warehouse_cart.warehouse.price %>,  Quantity : <%= warehouse_cart.quantity %><br>
+  <% end %>
+<h3><%= link_to "Empty cart!", controller: "carts", action: "empty_cart" %></h3>
+<h3><%= link_to "Checkout!", controller: "orders", action: "convert_cart_to_order" %></h3>
+<% else %>
+  <h2><%= "No Items in Cart!" %></h2>
+<% end %>
+
+
+<%=link_to "Add Items", {controller: "items", action: "index"}, :class => "add_to_cart"%>

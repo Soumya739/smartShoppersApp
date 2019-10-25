@@ -1,0 +1,9 @@
+<h1>Order_id : <%= @order.id %></h1>
+Created at :<%= @order.created_at %>
+Total Price :<%= @total_price %>
+<% @warehouse_orders.each do |warehouse_order|%>
+Store : <%= warehouse_order.warehouse.store.name %>, Item : <%= warehouse_order.warehouse.item.name %>,  Price : <%= warehouse_order.warehouse.price %>,  Quantity : <%= warehouse_order.quantity %><br>
+<% end %>
+
+
+<h4><%= link_to "Home", smartshoppers_path %></h4>

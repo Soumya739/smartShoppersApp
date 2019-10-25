@@ -1,0 +1,9 @@
+<h1>New Item</h1>
+<%= form_for @item do |f|%>
+<%= f.label :name%>
+<%= f.text_field :name%>
+<%= f.label :section%>
+<%= f.text_field :section%>
+<%= f.submit%>
+<% end %>
+<h4><%= link_to "Home", smartshoppers_path %></h4>

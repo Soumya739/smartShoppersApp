@@ -1,0 +1,16 @@
+
+<h1><%= @store.name %></h1>
+<h2><%= @store.location %></h2>
+
+
+<% if @store_warehouses.any?%>
+  <h2>Items: </h2>
+  <% @store_warehouses.each do |warehouse| %>
+    <li><%= (warehouse.item.section).upcase %> :: <%= warehouse.item.name%> :: Price :<%= warehouse.price%> :: Available Quantity :<%= warehouse.quantity%></li>
+    <p class="add_to_cart"><%=link_to "Add to cart", controller: "stores", action: "add_item_to_cart", id: @store, warehouse_id: warehouse.id%></p>
+  <% end %>
+<% else %>
+  <%= "This store is currently out of service." %>
+<% end %>
+
+  <p class="notification"><%= flash[:message] %></p>

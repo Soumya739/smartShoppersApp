@@ -1,0 +1,14 @@
+<%= flash[:message]%>
+
+<h1>New Warehouse</h1>
+<%= form_for @warehouse do |f|%>
+<%= f.label :store_id, "Store:"%>
+<%= f.collection_select :store_id, @stores, :id, :name%>
+<%= f.label :item_id, "Item:"%>
+<%= f.collection_select :item_id, @items, :id, :name%>
+<%= f.label :quantity, "Quantity:"%>
+<%= f.number_field :quantity%>
+<%= f.label :price, "Price(lb):"%>
+<%= f.number_field :price, step: :any %>
+<%= f.submit%>
+<% end %>

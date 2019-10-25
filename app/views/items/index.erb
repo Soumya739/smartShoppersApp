@@ -1,0 +1,6 @@
+<h1>All Items</h1>
+<% @items.each do |item| %>
+<p> <b><%= (item.section).upcase %></b>, <%= item.name%><br><span class="compare"><%= link_to "Compare", item_path(item) %></span></p>
+<% end %>
+
+<h4><%= link_to "Home", smartshoppers_path %></h4>

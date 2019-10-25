@@ -1,0 +1,17 @@
+<h1>All warehouses</h1>
+<% @stores.order('name').each do |store|%>
+    <% if store.warehouses.any? %>
+      <h4><%= store.name %> - Store(<%= link_to store.id, store_path(store.id) %>)</h4>
+      <p style="margin-left: 20px;">
+      <% store.warehouses.each do |warehouse|%>
+        Item<%=link_to warehouse.item_id, item_path(warehouse.item_id) %> - <%= warehouse.item.name %> :: Price(lb)- <%= warehouse.price %> :: Quntity - <%= warehouse.quantity %>
+        <%=link_to "Edit", {controller: "warehouses", action: "edit", id: warehouse.id}, :class => "add_to_cart"%>
+        <%=link_to "Remove", {controller: "warehouses", action: "destroy", id: warehouse.id}, :class => "add_to_cart"%>
+        <%= link_to "...", warehouse_path(warehouse.id)%><br>
+      <% end %>
+    <% end %>
+  </p>
+<% end %>
+
+
+<%= link_to "Home", smartshoppers_path %>
